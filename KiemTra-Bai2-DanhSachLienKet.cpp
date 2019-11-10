@@ -51,23 +51,27 @@ int DemPhanTuLaSoNguyenTo(Node * p){
 	return 0;
 }
 
-Node * Le, *Chan;
-void ChuyenPTChanLenTruocLeRaSau(Node * L){
+Node * Le, * Chan;
+void ChuyenPTChanLenTruocLeRaSau(Node *&L){
 	Node * c, * ct, * l, *lt;
 	Node * p = L;
+	Node * next;
 	while (p != NULL){
+		next = p->link;
 		if (abs(p->data)%2 == 0){//Neu so chan
-//			p->data = code;
+			ct = new(Node);
 			ct = p;
 			ct->link = NULL;
 			if (Chan == NULL){
 				Chan = ct;
+				L = ct;
 				c = ct;
 			} else {
 				c->link = ct;
 				c = ct;
 			}
 		} else {//Neu so le
+			lt = new(Node);
 			lt = p;
 			lt->link = NULL;
 			if (Le == NULL){
@@ -78,9 +82,26 @@ void ChuyenPTChanLenTruocLeRaSau(Node * L){
 				l = lt;
 			}
 		}
-		p = p->link;
+		p = next;
 	}
+	c->link = Le;
 }
+
+void hoanvi(int &a,int &b)
+ {
+     int tmp = a; 
+     a = b; 
+     b = tmp; 
+  }
+void Chuyen(Node *L) 
+{ 
+	 Node *i,*j; 
+	 for(i = L; i != NULL; i = i->link) 
+		for(j = i->link ; j != NULL;j = j->link)
+			if(i->data %2 == 1) 
+				hoanvi(j->data , i->data); 
+}
+
 int main(){
-	Tao(L),Xem(L);
+	Tao(L),Chuyen(L),Xem(L);
 }

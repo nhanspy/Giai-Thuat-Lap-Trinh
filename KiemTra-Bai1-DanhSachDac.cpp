@@ -67,10 +67,21 @@ int TongConLonNhat(int A[], int n){
 	}
 	return Max;
 }
+/*
+int TongConMax(int A[],int n,int k){
+	for (int i = 0; i <= n-k; i++)
+ 		for (int j = 0; j < k; j++)
+  			B[i] += A[i + j];
+ 	int	max = B[0];
+ 		for (int h = 1; h <= n - k;h++)
+ 	if (max < B[h])
+	 	max = B[h];
+ 	return max;
+}*/
 
 int main(){
 	int A[100], n;
 	cin >> n;
-	Tao(A,n),cout << TongConLonNhat(A,n) << endl,SapXepTangDanSoLeTruocSoChanSau(A,n),Xem(A,n);
+	Tao(A,n),cout << TongConLonNhat(A,n) << endl;
 	return 0;
 }
